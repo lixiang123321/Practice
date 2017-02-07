@@ -1,14 +1,8 @@
 package com.example.rere.practice.extendsandsuper;
 
 import com.example.rere.practice.base.activity.TestBaseActivity;
-import com.example.rere.practice.java8.MyOptional;
 
 import android.widget.LinearLayout;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 
 /**
  * test <? extends T> and <? super T>
@@ -39,7 +33,7 @@ public class TestExtendAndSuperActivity extends TestBaseActivity {
 
 
             // read from list
-
+            // valid
             Fruit fruit = fruitExtendList.get(0);
 
             // not valid, u can only guarantee in the list, they are all Fruit,
