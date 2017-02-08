@@ -14,7 +14,7 @@ public class TagLog {
     private static final String PRE_TAG = "Practice";
 
     public static void d(String tag, Object msg) {
-        if (isDebug) {
+        if (isDebug && null != msg) {
             if (msg.toString().length() < LOG_LENGTH) {
                 Log.d(PRE_TAG + tag, msg.toString());
             } else {
@@ -27,7 +27,7 @@ public class TagLog {
     }
 
     public static void i(String tag, Object msg) {
-        if (isDebug) {
+        if (isDebug && null != msg) {
             if (msg.toString().length() < LOG_LENGTH) {
                 Log.i(PRE_TAG + tag, msg.toString());
             } else {
@@ -40,7 +40,7 @@ public class TagLog {
     }
 
     public static void v(String tag, Object msg) {
-        if (isDebug) {
+        if (isDebug && null != msg) {
             if (msg.toString().length() < LOG_LENGTH) {
                 Log.v(PRE_TAG + tag, msg.toString());
             } else {
@@ -53,7 +53,7 @@ public class TagLog {
     }
 
     public static void e(String tag, Object msg) {
-        if (isDebug) {
+        if (isDebug && null != msg) {
             if (msg.toString().length() < LOG_LENGTH) {
                 Log.e(PRE_TAG + tag, msg.toString());
             } else {
@@ -66,7 +66,7 @@ public class TagLog {
     }
 
     public static void w(String tag, Object msg) {
-        if (isDebug) {
+        if (isDebug && null != msg) {
             if (msg.toString().length() < LOG_LENGTH) {
                 Log.w(PRE_TAG + tag, msg.toString());
             } else {
