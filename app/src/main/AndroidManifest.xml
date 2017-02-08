@@ -16,6 +16,8 @@
 
         <activity android:name=".java8.TestJava8Activity"/>
 
+        <activity android:name=".concurrent.TestThreadAndExecutorActivity"/>
+
     </application>
 
 </manifest>
