@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
- * test concurrent activity
+ * test Thread and Executors
  *
  * Created by rere on 2017/2/7.
  */

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Practice</string>
+
+    <string name="test_textview_withimageview">您现在的资金转出类交易限额为5,000元，可通过安全验证提升您的限额。</string>
 </resources>

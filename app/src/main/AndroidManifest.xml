@@ -18,6 +18,18 @@
 
         <activity android:name=".concurrent.TestThreadAndExecutorActivity"/>
 
+        <activity android:name=".concurrent.TestSynchronizationActivity"/>
+
+        <activity android:name=".concurrent.TestLocksActivity"/>
+
+        <activity android:name=".callapp.TestCallAppActivity"/>
+
+        <activity android:name=".testdistinct.TestDistinctAct"/>
+
+        <activity android:name=".animateview.TestAnimateViewActivity"/>
+
+        <activity android:name=".textviewwithimageview.TestTextViewWithImageViewAct"/>
+
     </application>
 
 </manifest>
