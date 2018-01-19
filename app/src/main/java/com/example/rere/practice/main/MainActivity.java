@@ -7,6 +7,7 @@ import com.example.rere.practice.concurrent.TestLocksActivity;
 import com.example.rere.practice.concurrent.TestSynchronizationActivity;
 import com.example.rere.practice.concurrent.TestThreadAndExecutorActivity;
 import com.example.rere.practice.java8.TestJava8Activity;
+import com.example.rere.practice.sms.SmsUtils;
 import com.example.rere.practice.testdistinct.TestDistinctAct;
 import com.example.rere.practice.textviewwithimageview.TestTextViewWithImageViewAct;
 
@@ -78,7 +79,15 @@ public class MainActivity extends TestBaseActivity {
                 // test textview end with imageView
                 TestTextViewWithImageViewAct.start(mContext);
             }
-        }).performClick();
+        });
+
+        getButton(layout, "send sms test", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // send sms test
+                SmsUtils.jumpSmsEditor(mContext, "95533", "52067");
+            }
+        });
 
     }
 
