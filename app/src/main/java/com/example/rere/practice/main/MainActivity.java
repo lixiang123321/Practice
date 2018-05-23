@@ -1,23 +1,37 @@
 package com.example.rere.practice.main;
 
+import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.net.wifi.WifiManager;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.LinearLayout;
+
 import com.example.rere.practice.animateview.TestAnimateViewActivity;
 import com.example.rere.practice.base.activity.TestBaseActivity;
+import com.example.rere.practice.base.utils.TagLog;
 import com.example.rere.practice.callapp.TestCallAppActivity;
 import com.example.rere.practice.concurrent.TestLocksActivity;
 import com.example.rere.practice.concurrent.TestSynchronizationActivity;
 import com.example.rere.practice.concurrent.TestThreadAndExecutorActivity;
 import com.example.rere.practice.java8.TestJava8Activity;
+import com.example.rere.practice.liuwangshu.TestLiuWangShuPracticeActivity;
+import com.example.rere.practice.reverse.TestReverseEngineeringActivity;
 import com.example.rere.practice.sms.SmsUtils;
 import com.example.rere.practice.testdistinct.TestDistinctAct;
 import com.example.rere.practice.textviewwithimageview.TestTextViewWithImageViewAct;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
+import com.example.rere.practice.wifi.TestWifiActivity;
+import com.example.rere.practice.wifi.TestWifiUtils;
 
 /**
  * main activity
- *
+ * <p>
  * Created by rere on 2017/1/20.
  */
 public class MainActivity extends TestBaseActivity {
@@ -89,6 +103,93 @@ public class MainActivity extends TestBaseActivity {
             }
         });
 
+        getButton(layout, "reverse engineering", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // reverse engineering
+                TestReverseEngineeringActivity.start(mContext);
+            }
+        });
+
+        getButton(layout, "liuwangshu practice", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // liuwangshu practice
+                TestLiuWangShuPracticeActivity.start(mContext);
+            }
+        });
+
+        getButton(layout, "get wifi info", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // get wifi info
+
+                String[] permission = new String[]{
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_WIFI_STATE,
+                        Manifest.permission.CHANGE_WIFI_STATE,
+                };
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(permission, 101);
+                } else {
+                    LinearLayout mLayoutWifi = new LinearLayout(mContext);
+                    mLayoutWifi.setOrientation(LinearLayout.VERTICAL);
+                    layout.addView(mLayoutWifi,
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                    TestWifiUtils.getWifiInfo(mContext, mLayoutWifi);
+                }
+            }
+        });
+
+        getButton(layout, "get GPS", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // get GPS
+                testGPS(layout);
+            }
+        });
+
+        getButton(layout, "jump get wifi act", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // jump get wifi act
+                TestWifiActivity.start(mContext);
+            }
+        });
+
     }
 
+    private void testGPS(LinearLayout layout) {
+        /*LocationManager mLocationManager = (LocationManager)
+                getSystemService(Context.LOCATION_SERVICE);*/
+        /*try {
+            Location locationGPS = mLocationManager.getLocation(LocationManager.GPS_PROVIDER);
+            Location locationNet = mLocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        } catch (Throwable throwable) {
+
+        }*/
+        //Location location = new Location();
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (101 == requestCode && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            TestWifiUtils.getWifiInfo(mContext, null);
+            registerReceiver(new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    TagLog.i(TAG, "wifi scan onReceive() : " + " intent = " + intent + ",");
+                    TestWifiUtils.getWifiInfo(context, null);
+                /*if (finalIsWifiOpenByUs) {
+                    wifiManager.setWifiEnabled(false);
+                }*/
+                    context.unregisterReceiver(this);
+                }
+            }, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+        }
+    }
 }

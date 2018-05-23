@@ -1,6 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rere.practice">
 
+    <!-- wifi -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
     <application android:allowBackup="true"
                  android:label="@string/app_name"
                  android:icon="@mipmap/ic_launcher"
@@ -29,6 +38,15 @@
         <activity android:name=".animateview.TestAnimateViewActivity"/>
 
         <activity android:name=".textviewwithimageview.TestTextViewWithImageViewAct"/>
+
+        <activity android:name=".reverse.TestReverseEngineeringActivity"/>
+
+        <!-- 刘望舒blog 练习-->
+        <activity android:name=".liuwangshu.TestLiuWangShuPracticeActivity"/>
+        <activity android:name=".liuwangshu.view.TestViewMainActivity"/>
+
+        <!-- wifi -->
+        <activity android:name=".wifi.TestWifiActivity"/>
 
     </application>
 

@@ -1,11 +1,11 @@
 package com.example.rere.practice.concurrent;
 
-import com.example.rere.practice.base.activity.TestBaseActivity;
-import com.example.rere.practice.base.utils.TagLog;
-
 import android.content.Context;
 import android.content.Intent;
 import android.widget.LinearLayout;
+
+import com.example.rere.practice.base.activity.TestBaseActivity;
+import com.example.rere.practice.base.utils.TagLog;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,6 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
 
 /**
  * test synchronization
@@ -36,9 +35,9 @@ public class TestSynchronizationActivity extends TestBaseActivity {
             count = 0;
             ExecutorService executor = Executors.newFixedThreadPool(2);
 
-            IntStream.range(0, 100000)
+            /*IntStream.range(0, 100000)
                     .forEach(i -> executor.submit(this::increment));
-                    //.forEach(i -> executor.submit(() -> increment()));
+                    //.forEach(i -> executor.submit(() -> increment()));*/
 
             stopExecutor(executor, 60);
 
@@ -60,9 +59,9 @@ public class TestSynchronizationActivity extends TestBaseActivity {
             count = 0;
             ExecutorService executor = Executors.newFixedThreadPool(2);
 
-            IntStream.range(0, 100000)
+            /*IntStream.range(0, 100000)
                     .forEach(i -> executor.submit(this::incrementSync));
-                    //.forEach(i -> executor.submit(this::incrementWithSyncBlock));
+                    //.forEach(i -> executor.submit(this::incrementWithSyncBlock));*/
 
             stopExecutor(executor, 60);
 
