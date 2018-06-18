@@ -2,4 +2,14 @@
     <string name="app_name">Practice</string>
 
     <string name="test_textview_withimageview">您现在的资金转出类交易限额为5,000元，可通过安全验证提升您的限额。</string>
+
+    <!-- Xposed wifi config act -->
+    <string name="ssid">SSID</string>
+    <string name="bssid">BSSID</string>
+    <string name="bssids">BSSIDS</string>
+    <string name="please_enter_ssid">enter ssid</string>
+    <string name="please_enter_bssid">enter bssid or select below</string>
+    <string name="select">select</string>
+    <string name="act_config_empty_selection">empty selection!</string>
+
 </resources>

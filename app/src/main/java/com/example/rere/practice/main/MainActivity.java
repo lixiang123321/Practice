@@ -8,7 +8,10 @@ import com.example.rere.practice.concurrent.TestSynchronizationActivity;
 import com.example.rere.practice.concurrent.TestThreadAndExecutorActivity;
 import com.example.rere.practice.java8.TestJava8Activity;
 import com.example.rere.practice.testdistinct.TestDistinctAct;
+import com.example.rere.practice.testinvirtual.TestInVirtualXposedActivity;
+import com.example.rere.practice.testinvirtual.TestInVirtualXposedActivity2;
 import com.example.rere.practice.textviewwithimageview.TestTextViewWithImageViewAct;
+import com.example.rere.practice.xposedwifi.XposedWifiActivity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -77,6 +80,30 @@ public class MainActivity extends TestBaseActivity {
             public void onClick(View v) {
                 // test textview end with imageView
                 TestTextViewWithImageViewAct.start(mContext);
+            }
+        });
+
+        getButton(layout, "test in virtual Xposed Activity", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // test in virtual Xposed Activity
+                TestInVirtualXposedActivity.start(mContext);
+            }
+        });
+
+        getButton(layout, "test in virtual Xposed Activity2", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // test in virtual Xposed Activity2
+                TestInVirtualXposedActivity2.start(mContext);
+            }
+        });
+
+        getButton(layout, "Xposed wifi activity", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Xposed wifi activity
+                XposedWifiActivity.start(mContext);
             }
         }).performClick();
 

@@ -1,7 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.rere.practice">
 
-    <application android:allowBackup="true"
+    <!-- wifi -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- file -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <application
+            android:name=".base.BaseApplication"
+            android:allowBackup="true"
                  android:label="@string/app_name"
                  android:icon="@mipmap/ic_launcher"
                  android:supportsRtl="true"
@@ -13,6 +25,16 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <meta-data
+                android:name="xposedmodule"
+                android:value="true"/>
+        <meta-data
+                android:name="xposeddescription"
+                android:value="@string/app_name"/>
+        <meta-data
+                android:name="xposedminversion"
+                android:value="53"/>
 
         <activity android:name=".java8.TestJava8Activity"/>
 
@@ -29,6 +51,11 @@
         <activity android:name=".animateview.TestAnimateViewActivity"/>
 
         <activity android:name=".textviewwithimageview.TestTextViewWithImageViewAct"/>
+
+        <activity android:name=".testinvirtual.TestInVirtualXposedActivity"/>
+        <activity android:name=".testinvirtual.TestInVirtualXposedActivity2"/>
+        <activity android:name=".xposedwifi.XposedWifiActivity"/>
+        <activity android:name=".xposedwifi.XposedWifiConfigActivity"/>
 
     </application>
 
