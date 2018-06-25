@@ -25,6 +25,7 @@ import com.example.rere.practice.liuwangshu.TestLiuWangShuPracticeActivity;
 import com.example.rere.practice.reverse.TestReverseEngineeringActivity;
 import com.example.rere.practice.sms.SmsUtils;
 import com.example.rere.practice.testdistinct.TestDistinctAct;
+import com.example.rere.practice.testvirtualxposedenvironment.TestInVirtualXposedEnvironment;
 import com.example.rere.practice.textviewwithimageview.TestTextViewWithImageViewAct;
 import com.example.rere.practice.wifi.TestWifiActivity;
 import com.example.rere.practice.wifi.TestWifiUtils;
@@ -160,6 +161,14 @@ public class MainActivity extends TestBaseActivity {
             }
         });
 
+        getButton(layout, "test in virtual Xposed environment", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // test in virtual Xposed environment
+                TestInVirtualXposedEnvironment.start(mContext);
+            }
+        });
+        
     }
 
     private void testGPS(LinearLayout layout) {

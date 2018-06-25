@@ -48,6 +48,9 @@
         <!-- wifi -->
         <activity android:name=".wifi.TestWifiActivity"/>
 
+        <!-- TestInVirtualXposedEnvironmentment -->
+        <activity android:name=".testvirtualxposedenvironment.TestInVirtualXposedEnvironment"/>
+
     </application>
 
 </manifest>
