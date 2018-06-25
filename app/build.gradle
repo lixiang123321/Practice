@@ -33,4 +33,8 @@ dependencies {
     })*/
     compile 'com.android.support:appcompat-v7:26.0.+'
 //    testCompile 'junit:junit:4.12'
+
+    provided files('xposed/api-82.jar')
+    provided files('xposed/api-82-sources.jar')
+
 }

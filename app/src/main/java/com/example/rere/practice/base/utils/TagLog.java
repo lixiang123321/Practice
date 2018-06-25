@@ -2,6 +2,8 @@ package com.example.rere.practice.base.utils;
 
 import android.util.Log;
 
+import de.robv.android.xposed.XposedBridge;
+
 /**
  * Created by rere on 2016/1/11.
  */
@@ -74,6 +76,19 @@ public class TagLog {
                 String str1 = msg.toString().substring(0, LOG_LENGTH);
                 Log.w(PRE_TAG + tag, str1);
                 w(PRE_TAG + tag, msg.toString().substring(LOG_LENGTH));
+            }
+        }
+    }
+
+    public static void x(String tag, Object msg) {
+        if (isDebug && null != msg) {
+            if (msg.toString().length() < LOG_LENGTH) {
+                XposedBridge.log(PRE_TAG + tag + ":" + msg.toString());
+            } else {
+                // msg过长
+                String str1 = msg.toString().substring(0, LOG_LENGTH);
+                XposedBridge.log(PRE_TAG + tag + ":" + str1);
+                x(PRE_TAG + tag, msg.toString().substring(LOG_LENGTH));
             }
         }
     }

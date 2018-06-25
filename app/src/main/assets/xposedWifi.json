@@ -1,0 +1,18 @@
+{
+  "bssidGroup": [
+    {
+      "bssid": "14:75:90:dd:0d:54",
+      "recordTime": 1529317377407,
+      "ssid": "TP-LINK_0D54"
+    },
+    {
+      "bssid": "14:75:90:dd:0d:55",
+      "recordTime": 1529317377407,
+      "ssid": "TP-LINK_0D54"
+    }
+  ],
+  "bssidSelect": "14:75:90:dd:0d:54",
+  "latitude": 0.0,
+  "longitude": 0.0,
+  "ssid": "TP-LINK_0D54"
+}

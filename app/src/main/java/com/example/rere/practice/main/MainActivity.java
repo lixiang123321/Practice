@@ -1,38 +1,22 @@
 package com.example.rere.practice.main;
 
-import android.Manifest;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
-import android.net.wifi.WifiManager;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.LinearLayout;
-
 import com.example.rere.practice.animateview.TestAnimateViewActivity;
 import com.example.rere.practice.base.activity.TestBaseActivity;
-import com.example.rere.practice.base.utils.TagLog;
 import com.example.rere.practice.callapp.TestCallAppActivity;
 import com.example.rere.practice.concurrent.TestLocksActivity;
 import com.example.rere.practice.concurrent.TestSynchronizationActivity;
 import com.example.rere.practice.concurrent.TestThreadAndExecutorActivity;
 import com.example.rere.practice.java8.TestJava8Activity;
-import com.example.rere.practice.liuwangshu.TestLiuWangShuPracticeActivity;
-import com.example.rere.practice.reverse.TestReverseEngineeringActivity;
-import com.example.rere.practice.sms.SmsUtils;
 import com.example.rere.practice.testdistinct.TestDistinctAct;
-import com.example.rere.practice.testvirtualxposedenvironment.TestInVirtualXposedEnvironment;
 import com.example.rere.practice.textviewwithimageview.TestTextViewWithImageViewAct;
-import com.example.rere.practice.wifi.TestWifiActivity;
-import com.example.rere.practice.wifi.TestWifiUtils;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 
 /**
  * main activity
- * <p>
+ *
  * Created by rere on 2017/1/20.
  */
 public class MainActivity extends TestBaseActivity {
@@ -95,6 +79,30 @@ public class MainActivity extends TestBaseActivity {
                 TestTextViewWithImageViewAct.start(mContext);
             }
         });
+
+        getButton(layout, "test in virtual Xposed Activity", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // test in virtual Xposed Activity
+                TestInVirtualXposedActivity.start(mContext);
+            }
+        });
+
+        getButton(layout, "test in virtual Xposed Activity2", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // test in virtual Xposed Activity2
+                TestInVirtualXposedActivity2.start(mContext);
+            }
+        });
+
+        getButton(layout, "Xposed wifi activity", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Xposed wifi activity
+                XposedWifiActivity.start(mContext);
+            }
+        }).performClick();
 
         getButton(layout, "send sms test", new View.OnClickListener() {
             @Override
@@ -168,7 +176,7 @@ public class MainActivity extends TestBaseActivity {
                 TestInVirtualXposedEnvironment.start(mContext);
             }
         });
-        
+
     }
 
     private void testGPS(LinearLayout layout) {
