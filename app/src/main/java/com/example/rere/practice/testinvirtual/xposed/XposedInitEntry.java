@@ -86,7 +86,7 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
         TagLog.x(TAG, "handleTargetApp() : " + lpparam);
         getAndHookInterger(lpparam);
         getAndHookWifi(lpparam);
-        DeviceHookEntry.getAndHookDeviceInfo(lpparam);
+        HookEntry.hookAtLoadPackage(lpparam);
     }
 
     private void getAndHookInterger(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
