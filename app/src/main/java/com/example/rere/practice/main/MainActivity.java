@@ -20,6 +20,7 @@ import com.example.rere.practice.callapp.TestCallAppActivity;
 import com.example.rere.practice.concurrent.TestLocksActivity;
 import com.example.rere.practice.concurrent.TestSynchronizationActivity;
 import com.example.rere.practice.concurrent.TestThreadAndExecutorActivity;
+import com.example.rere.practice.deviceinfo.TestVirtualMultiAppActivity;
 import com.example.rere.practice.java8.TestJava8Activity;
 import com.example.rere.practice.liuwangshu.TestLiuWangShuPracticeActivity;
 import com.example.rere.practice.reverse.TestReverseEngineeringActivity;
@@ -121,7 +122,7 @@ public class MainActivity extends TestBaseActivity {
                 // Xposed wifi activity
                 XposedWifiActivity.start(mContext);
             }
-        }).performClick();
+        });
 
         getButton(layout, "send sms test", new View.OnClickListener() {
             @Override
@@ -195,6 +196,14 @@ public class MainActivity extends TestBaseActivity {
                 TestInVirtualXposedEnvironment.start(mContext);
             }
         });
+
+        getButton(layout, "TestVirtualMultiAppActivity", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // get device id
+                TestVirtualMultiAppActivity.start(mContext);
+            }
+        }).performClick();
 
     }
 

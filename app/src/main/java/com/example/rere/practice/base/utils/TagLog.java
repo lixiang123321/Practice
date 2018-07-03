@@ -13,7 +13,7 @@ public class TagLog {
 
     private static final int LOG_LENGTH = 3000; //分段打印Log
 
-    private static final String PRE_TAG = "Practice";
+    private static final String PRE_TAG = "Practice : ";
 
     public static void d(String tag, Object msg) {
         if (isDebug && null != msg) {

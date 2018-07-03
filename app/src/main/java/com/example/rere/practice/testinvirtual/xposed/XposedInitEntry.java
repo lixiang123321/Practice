@@ -1,15 +1,15 @@
 package com.example.rere.practice.testinvirtual.xposed;
 
-import com.google.gson.Gson;
-
-import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.xposedwifi.data.LocalDataIOUtils;
-import com.example.rere.practice.xposedwifi.data.LocalSavaDataBean;
-
 import android.net.wifi.ScanResult;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
+
+import com.example.rere.practice.base.utils.TagLog;
+import com.example.rere.practice.testinvirtual.TestInVirtualXposedActivity2;
+import com.example.rere.practice.xposedwifi.data.LocalDataIOUtils;
+import com.example.rere.practice.xposedwifi.data.LocalSavaDataBean;
+import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,14 +36,14 @@ import static com.example.rere.practice.testinvirtual.TestInVirtualXposedActivit
 public class XposedInitEntry implements IXposedHookLoadPackage {
 
     private static final String TAG = XposedInitEntry.class.getSimpleName();
-    private static final String KEY_PACKAGE_NAMES = "com.example.rere.practicep";
+    private static final String KEY_PACKAGE_NAMES_LIST = TestInVirtualXposedActivity2.KEY_PACKAGE_NAME;
     private static final String CLASS_WIFI_MANAGER = "android.net.wifi.WifiManager";
     private static final String METHOD_WIFI_MANAGER = "getScanResults";
 
     private static final String KEY_TARGET_SSID_DEFAULT = "Test";
     private static final String KEY_TARGET_BSSID_DEFAULT = "12:34:56:78:90:12";
 
-    private static final String KEY_TARGET_SSID = getKeyTargetSsid();
+    private static String KEY_TARGET_SSID = getKeyTargetSsid();
 
     private static String getKeyTargetSsid() {
         LocalSavaDataBean localData = getLocalDataFromFile(LocalDataIOUtils.KEY_FILE_NAME);
@@ -56,7 +56,7 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
         return KEY_TARGET_SSID_DEFAULT;
     }
 
-    private static final String KEY_TARGET_BSSID = getKeyTargetBssid();
+    private static String KEY_TARGET_BSSID = getKeyTargetBssid();
 
     private static String getKeyTargetBssid() {
         LocalSavaDataBean localData = getLocalDataFromFile(LocalDataIOUtils.KEY_FILE_NAME);
@@ -73,7 +73,7 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
         TagLog.x(TAG, "handleLoadPackage() : " + " lpparam = " + lpparam + ",");
 
-        if (!KEY_PACKAGE_NAME.contains(lpparam.packageName)) {
+        if (!KEY_PACKAGE_NAMES_LIST.contains(lpparam.packageName)) {
             TagLog.x(TAG, "handleLoadPackage() : not target package");
             return;
         }
@@ -86,6 +86,7 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
         TagLog.x(TAG, "handleTargetApp() : " + lpparam);
         getAndHookInterger(lpparam);
         getAndHookWifi(lpparam);
+        DeviceHookEntry.getAndHookDeviceInfo(lpparam);
     }
 
     private void getAndHookInterger(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
@@ -112,7 +113,7 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
 
     }
 
-    private void readFileInXposed() throws Throwable {
+    private static String readFileInXposed() throws Throwable {
         TagLog.x(TAG, "readFileInXposed() : ");
         String prefix = KEY_PREFIX_DATA_USER_0;
 
@@ -121,6 +122,7 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
 
         String str = getStringFromFile(fileName);
         TagLog.x(TAG, "readFileInXposed() : " + " file str = " + str + ",");
+        return str;
     }
 
     @NonNull
@@ -140,13 +142,15 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
         TagLog.x(TAG, "getLocalDataFromFile() : " + " fileName = " + fileName + ",");
         LocalSavaDataBean localSavaDataBean = null;
         try {
-            String stringFromFile = getStringFromFile(fileName);
+            String stringFromFile;
+            // stringFromFile = getStringFromFile(fileName);
+            stringFromFile = readFileInXposed();
             if (TextUtils.isEmpty(stringFromFile)) {
                 return null;
             }
             localSavaDataBean = new Gson().fromJson(stringFromFile, LocalSavaDataBean.class);
             TagLog.x(TAG, "getLocalDataFromFile() : " + " localSavaDataBean = " + localSavaDataBean + ",");
-        } catch (IOException e) {
+        } catch (Throwable e) {
             TagLog.e(TAG, "getLocalDataFromFile() : " + e.getLocalizedMessage());
         }
         return localSavaDataBean;
@@ -179,6 +183,13 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
 
                 TagLog.x(TAG, "afterHookedMethod() : " + " isHookSuccess = " + isHookSuccess + ",");
                 TagLog.x(TAG, "afterHookedMethod() : " + " isHasTargetSSID = " + isHasTargetSSID + ",");
+
+                try {
+                    TagLog.x(TAG, "afterHookedMethod() : " + " KEY_TARGET_SSID = " + KEY_TARGET_SSID + ",");
+                    TagLog.x(TAG, "afterHookedMethod() : " + " KEY_TARGET_BSSID = " + KEY_TARGET_BSSID + ",");
+                } catch (Exception e) {
+                    TagLog.x(TAG, "afterHookedMethod() : " + e.getMessage());
+                }
 
                 if (isHookSuccess && !isHasTargetSSID) {
                     ScanResult scanResult0 = (ScanResult) ((List) paramResult).get(0);

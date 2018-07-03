@@ -1,13 +1,5 @@
 package com.example.rere.practice.xposedwifi;
 
-import com.google.gson.Gson;
-
-import com.example.rere.practice.base.activity.TestBaseActivity;
-import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.xposedwifi.data.FileUtils;
-import com.example.rere.practice.xposedwifi.data.LocalDataIOUtils;
-import com.example.rere.practice.xposedwifi.data.LocalSavaDataBean;
-
 import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -24,6 +16,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.rere.practice.base.activity.TestBaseActivity;
+import com.example.rere.practice.base.utils.TagLog;
+import com.example.rere.practice.xposedwifi.data.FileUtils;
+import com.example.rere.practice.xposedwifi.data.LocalDataIOUtils;
+import com.example.rere.practice.xposedwifi.data.LocalSavaDataBean;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -172,7 +171,7 @@ public class XposedWifiActivity extends TestBaseActivity {
         TagLog.i(TAG, "scanWifis() : ");
         if (null == mWifiManager) {
             mWifiManager = (WifiManager)
-                    getSystemService(Context.WIFI_SERVICE);
+                    getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         }
         if (null == mBroadcastReceiver) {
             mBroadcastReceiver = new BroadcastReceiver() {
@@ -210,7 +209,7 @@ public class XposedWifiActivity extends TestBaseActivity {
     private void onWifiScanBroadcastReceive() {
         TagLog.i(TAG, "onWifiScanBroadcastReceive() : ");
         if (null == mWifiManager) {
-            mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+            mWifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         }
 
         List<ScanResult> scanResults = mWifiManager.getScanResults();
