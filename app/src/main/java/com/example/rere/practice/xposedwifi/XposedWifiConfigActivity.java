@@ -1,11 +1,5 @@
 package com.example.rere.practice.xposedwifi;
 
-import com.example.rere.practice.R;
-import com.example.rere.practice.base.activity.BaseActivity;
-import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.xposedwifi.data.LocalDataIOUtils;
-import com.example.rere.practice.xposedwifi.data.LocalSavaDataBean;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,10 +7,18 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import com.example.rere.practice.R;
+import com.example.rere.practice.base.activity.BaseActivity;
+import com.example.rere.practice.base.utils.TagLog;
+import com.example.rere.practice.xposedwifi.data.LocalDataIOUtils;
+import com.example.rere.practice.xposedwifi.data.LocalSavaDataBean;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,6 +37,8 @@ public class XposedWifiConfigActivity extends BaseActivity {
     private EditText mEtBssid;
     private Spinner mSpinner;
     private View mBtnSelect;
+    private Button mBtnSaveConfig;
+    private ToggleButton mTbIsBssidRandomly;
     // data
     private LocalSavaDataBean mDataBean;
     private String mSpinnerSelectStr;
@@ -62,6 +66,9 @@ public class XposedWifiConfigActivity extends BaseActivity {
         mEtBssid = findViewById(R.id.et_bssid);
         mSpinner = findViewById(R.id.spinner);
         mBtnSelect = findViewById(R.id.btn_select);
+        mBtnSaveConfig = findViewById(R.id.btn_save_config);
+        mTbIsBssidRandomly = findViewById(R.id.tb_is_select_bssid_randomly);
+
         setUpViews();
     }
 
@@ -86,6 +93,15 @@ public class XposedWifiConfigActivity extends BaseActivity {
             }
         });
 
+        mBtnSaveConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveConfigTofile();
+            }
+        });
+
+
+        mTbIsBssidRandomly.setChecked(mDataBean.isBssidRandomly());
 
     }
 
@@ -146,9 +162,8 @@ public class XposedWifiConfigActivity extends BaseActivity {
     }
 
     // save data
-    @Override
-    protected void onPause() {
-        super.onPause();
+
+    private void saveConfigTofile() {
         String ssid = mEtSsid.getText().toString();
         String bssid = mEtBssid.getText().toString();
         if (!TextUtils.isEmpty(ssid) && !TextUtils.isEmpty(bssid)) {
@@ -157,6 +172,7 @@ public class XposedWifiConfigActivity extends BaseActivity {
             }
             mDataBean.setSsid(ssid);
             mDataBean.setBssidSelect(bssid);
+            mDataBean.setBssidRandomly(mTbIsBssidRandomly.isChecked());
             LocalDataIOUtils.saveLocalDataToFile(mDataBean);
             Toast.makeText(mContext, "The new config will be effective after restart.",
                     Toast.LENGTH_LONG).show();

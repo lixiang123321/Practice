@@ -30,6 +30,7 @@ public class LocalSavaDataBean {
     private String bssidSelect;
     private double latitude;
     private double longitude;
+    private boolean bssidRandomly;
     private List<BssidGroupBean> bssidGroup;
 
     public String getSsid() {
@@ -43,23 +44,25 @@ public class LocalSavaDataBean {
     public String getBssidSelect() {
         TagLog.i(TAG, "getBssidSelect() : ");
 
-        TagLog.i(TAG, "getBssidSelect() : randomly");
-        if (null != bssidGroup && bssidGroup.size() > 0) {
-            int size = bssidGroup.size();
-            int random;
-            String randomBssid;
+        if (isBssidRandomly()) {
+            TagLog.i(TAG, "getBssidSelect() : randomly");
+            if (null != bssidGroup && bssidGroup.size() > 0) {
+                int size = bssidGroup.size();
+                int random;
+                String randomBssid;
 
-            while (true) {
-                if (TextUtils.isEmpty(ssid)) {
-                    break;
-                }
+                while (true) {
+                    if (TextUtils.isEmpty(ssid)) {
+                        break;
+                    }
 
-                random = new Random().nextInt(size);
-                BssidGroupBean bssidGroupBean = bssidGroup.get(random);
-                if (ssid.equals(bssidGroupBean.ssid)) {
-                    randomBssid = bssidGroupBean.bssid;
-                    TagLog.i(TAG, "getBssidSelect() : " + " randomBssid = " + randomBssid + ",");
-                    return randomBssid;
+                    random = new Random().nextInt(size);
+                    BssidGroupBean bssidGroupBean = bssidGroup.get(random);
+                    if (ssid.equals(bssidGroupBean.ssid)) {
+                        randomBssid = bssidGroupBean.bssid;
+                        TagLog.i(TAG, "getBssidSelect() : " + " randomBssid = " + randomBssid + ",");
+                        return randomBssid;
+                    }
                 }
             }
         }
@@ -88,6 +91,14 @@ public class LocalSavaDataBean {
         this.longitude = longitude;
     }
 
+    public boolean isBssidRandomly() {
+        return bssidRandomly;
+    }
+
+    public void setBssidRandomly(boolean bssidRandomly) {
+        this.bssidRandomly = bssidRandomly;
+    }
+
     public List<BssidGroupBean> getBssidGroup() {
         return bssidGroup;
     }
@@ -103,6 +114,7 @@ public class LocalSavaDataBean {
                 ", bssidSelect='" + bssidSelect + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
+                ", bssidRandomly=" + bssidRandomly +
                 ", bssidGroup=" + bssidGroup +
                 '}';
     }
