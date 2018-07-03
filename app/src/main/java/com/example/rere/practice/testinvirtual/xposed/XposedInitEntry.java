@@ -3,7 +3,6 @@ package com.example.rere.practice.testinvirtual.xposed;
 import android.net.wifi.ScanResult;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.View;
 
 import com.example.rere.practice.base.utils.TagLog;
 import com.example.rere.practice.testinvirtual.TestInVirtualXposedActivity2;
@@ -35,8 +34,10 @@ import static com.example.rere.practice.testinvirtual.TestInVirtualXposedActivit
 
 public class XposedInitEntry implements IXposedHookLoadPackage {
 
+    private static final boolean IS_MORE_LOG = false;
+
     private static final String TAG = XposedInitEntry.class.getSimpleName();
-    private static final String KEY_PACKAGE_NAMES_LIST = TestInVirtualXposedActivity2.KEY_PACKAGE_NAME;
+    private static final String KEY_PACKAGE_NAMES_LIST = TestInVirtualXposedActivity2.KEY_PACKAGE_NAME + "|com.test.test";
     private static final String CLASS_WIFI_MANAGER = "android.net.wifi.WifiManager";
     private static final String METHOD_WIFI_MANAGER = "getScanResults";
 
@@ -47,7 +48,9 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
 
     private static String getKeyTargetSsid() {
         LocalSavaDataBean localData = getLocalDataFromFile(LocalDataIOUtils.KEY_FILE_NAME);
-        TagLog.x(TAG, "getKeyTargetSsid() : " + " localData = " + localData + ",");
+        if (IS_MORE_LOG) {
+            TagLog.x(TAG, "getKeyTargetSsid() : " + " localData = " + localData + ",");
+        }
         if (null != localData && !TextUtils.isEmpty(localData.getSsid())) {
             TagLog.x(TAG, "getKeyTargetSsid() : " + localData.getSsid());
             return localData.getSsid();
@@ -60,7 +63,9 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
 
     private static String getKeyTargetBssid() {
         LocalSavaDataBean localData = getLocalDataFromFile(LocalDataIOUtils.KEY_FILE_NAME);
-        TagLog.x(TAG, "getKeyTargetBssid() : " + " localData = " + localData + ",");
+        if (IS_MORE_LOG) {
+            TagLog.x(TAG, "getKeyTargetBssid() : " + " localData = " + localData + ",");
+        }
         if (null != localData && !TextUtils.isEmpty(localData.getBssidSelect())) {
             TagLog.x(TAG, "getKeyTargetBssid() : " + localData.getBssidSelect());
             return localData.getBssidSelect();
@@ -84,44 +89,25 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
 
     private void handleTargetApp(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
         TagLog.x(TAG, "handleTargetApp() : " + lpparam);
-        getAndHookInterger(lpparam);
         getAndHookWifi(lpparam);
         HookEntry.hookAtLoadPackage(lpparam);
     }
 
-    private void getAndHookInterger(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
-        TagLog.x(TAG, "getAndHookInterger() : ");
-
-        XposedHelpers.findAndHookMethod(View.class.getName(), lpparam.classLoader, "getId", new XC_MethodHook() {
-            @Override
-            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                super.beforeHookedMethod(param);
-
-                try {
-                    readFileInXposed();
-                } catch (Throwable throwable) {
-                    TagLog.x(TAG, "beforeHookedMethod() : " + throwable.getMessage());
-                }
-
-            }
-
-            @Override
-            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                super.afterHookedMethod(param);
-            }
-        });
-
-    }
-
     private static String readFileInXposed() throws Throwable {
-        TagLog.x(TAG, "readFileInXposed() : ");
+        if (IS_MORE_LOG) {
+            TagLog.x(TAG, "readFileInXposed() : ");
+        }
         String prefix = KEY_PREFIX_DATA_USER_0;
 
         String fileName = prefix + KEY_EXPOSED_VIRTUAL + prefix + KEY_PACKAGE_NAME + KEY_PATH_SEPARATOR + KEY_FILES + KEY_PATH_SEPARATOR + LocalDataIOUtils.KEY_FILE_NAME;
-        TagLog.x(TAG, "readFileInXposed() : " + " fileName = " + fileName + ",");
+        if (IS_MORE_LOG) {
+            TagLog.x(TAG, "readFileInXposed() : " + " fileName = " + fileName + ",");
+        }
 
         String str = getStringFromFile(fileName);
-        TagLog.x(TAG, "readFileInXposed() : " + " file str = " + str + ",");
+        if (IS_MORE_LOG) {
+            TagLog.x(TAG, "readFileInXposed() : " + " file str = " + str + ",");
+        }
         return str;
     }
 
@@ -149,7 +135,9 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
                 return null;
             }
             localSavaDataBean = new Gson().fromJson(stringFromFile, LocalSavaDataBean.class);
-            TagLog.x(TAG, "getLocalDataFromFile() : " + " localSavaDataBean = " + localSavaDataBean + ",");
+            if (IS_MORE_LOG) {
+                TagLog.x(TAG, "getLocalDataFromFile() : " + " localSavaDataBean = " + localSavaDataBean + ",");
+            }
         } catch (Throwable e) {
             TagLog.e(TAG, "getLocalDataFromFile() : " + e.getLocalizedMessage());
         }
@@ -166,7 +154,9 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                 Object paramResult = param.getResult();
-                TagLog.x(TAG, "afterHookedMethod() : " + " param.getResult() = " + paramResult + ",");
+                if (IS_MORE_LOG) {
+                    TagLog.x(TAG, "afterHookedMethod() : " + " param.getResult() = " + paramResult + ",");
+                }
 
                 boolean isHookSuccess = false;
                 boolean isHasTargetSSID = false;
@@ -206,7 +196,9 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
                     }
                 }*/
 
-                TagLog.x(TAG, "afterHookedMethod() : " + " param.getResult() = " + param.getResult() + ",");
+                if (IS_MORE_LOG) {
+                    TagLog.x(TAG, "afterHookedMethod() : " + " param.getResult() = " + param.getResult() + ",");
+                }
             }
         });
     }

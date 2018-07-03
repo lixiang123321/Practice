@@ -1,5 +1,11 @@
 package com.example.rere.practice.testinvirtual.xposed;
 
+import android.view.View;
+
+import com.example.rere.practice.base.utils.TagLog;
+
+import de.robv.android.xposed.XC_MethodHook;
+import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 /**
@@ -10,8 +16,38 @@ public class HookEntry {
 
     private static final String TAG = HookEntry.class.getSimpleName();
 
-    public static void hookAtLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) {
-//        TagLog.x(TAG, "getAndHookDeviceInfo() : " + " lpparam = " + lpparam + ",");
+    public static void hookAtLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
+        TagLog.x(TAG, "getAndHookDeviceInfo() : " + " lpparam = " + lpparam + ",");
+
+        hookAtLoadPackage(lpparam);
+    }
+
+    private void hookViewGetIdForTest(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
+        TagLog.x(TAG, "hookViewGetIdForTest() : ");
+
+        XposedHelpers.findAndHookMethod(View.class.getName(), lpparam.classLoader, "getId", new XC_MethodHook() {
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                super.beforeHookedMethod(param);
+
+                try {
+                    hookTest();
+                } catch (Throwable throwable) {
+                    TagLog.x(TAG, "beforeHookedMethod() : " + throwable.getMessage());
+                }
+
+            }
+
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                super.afterHookedMethod(param);
+            }
+        });
 
     }
+
+    private void hookTest() {
+
+    }
+
 }
