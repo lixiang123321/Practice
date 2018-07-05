@@ -18,11 +18,10 @@ public class HookEntry {
 
     public static void hookAtLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
         TagLog.x(TAG, "getAndHookDeviceInfo() : " + " lpparam = " + lpparam + ",");
-
-        hookAtLoadPackage(lpparam);
+        hookViewGetIdForTest(lpparam);
     }
 
-    private void hookViewGetIdForTest(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
+    private static void hookViewGetIdForTest(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
         TagLog.x(TAG, "hookViewGetIdForTest() : ");
 
         XposedHelpers.findAndHookMethod(View.class.getName(), lpparam.classLoader, "getId", new XC_MethodHook() {
@@ -46,7 +45,10 @@ public class HookEntry {
 
     }
 
-    private void hookTest() {
+    private static void hookTest() {
+        TagLog.x(TAG, "hookTest() : ");
+
+
 
     }
 
