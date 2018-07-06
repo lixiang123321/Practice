@@ -1,4 +1,4 @@
-package com.example.rere.practice.xposedwifi;
+package com.example.rere.practice.xposed.xposedwifi;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,8 +17,8 @@ import android.widget.ToggleButton;
 import com.example.rere.practice.R;
 import com.example.rere.practice.base.activity.BaseActivity;
 import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.xposedwifi.data.LocalDataIOUtils;
-import com.example.rere.practice.xposedwifi.data.LocalSavaDataBean;
+import com.example.rere.practice.xposed.xposedwifi.data.LocalDataIOUtils;
+import com.example.rere.practice.xposed.xposedwifi.data.LocalSavaDataBean;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

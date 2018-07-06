@@ -1,10 +1,10 @@
-package com.example.rere.practice.xposedwifi.data;
+package com.example.rere.practice.xposed.xposedwifi.data;
 
-
-import com.example.rere.practice.base.utils.TagLog;
 
 import android.os.Environment;
 import android.support.annotation.NonNull;
+
+import com.example.rere.practice.base.utils.TagLog;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

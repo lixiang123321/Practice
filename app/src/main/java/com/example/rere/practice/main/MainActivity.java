@@ -20,19 +20,18 @@ import com.example.rere.practice.callapp.TestCallAppActivity;
 import com.example.rere.practice.concurrent.TestLocksActivity;
 import com.example.rere.practice.concurrent.TestSynchronizationActivity;
 import com.example.rere.practice.concurrent.TestThreadAndExecutorActivity;
-import com.example.rere.practice.deviceinfo.TestVirtualMultiAppActivity;
 import com.example.rere.practice.java8.TestJava8Activity;
 import com.example.rere.practice.liuwangshu.TestLiuWangShuPracticeActivity;
 import com.example.rere.practice.reverse.TestReverseEngineeringActivity;
 import com.example.rere.practice.sms.SmsUtils;
 import com.example.rere.practice.testdistinct.TestDistinctAct;
-import com.example.rere.practice.testinvirtual.TestInVirtualXposedActivity;
-import com.example.rere.practice.testinvirtual.TestInVirtualXposedActivity2;
-import com.example.rere.practice.testvirtualxposedenvironment.TestInVirtualXposedEnvironment;
 import com.example.rere.practice.textviewwithimageview.TestTextViewWithImageViewAct;
 import com.example.rere.practice.wifi.TestWifiActivity;
 import com.example.rere.practice.wifi.TestWifiUtils;
-import com.example.rere.practice.xposedwifi.XposedWifiActivity;
+import com.example.rere.practice.xposed.testinvirtual.TestInVirtualXposedActivity;
+import com.example.rere.practice.xposed.testinvirtual.TestInVirtualXposedActivity2;
+import com.example.rere.practice.xposed.testinvirtual.TestInVirtualXposedEnvironment;
+import com.example.rere.practice.xposed.xposedwifi.XposedWifiActivity;
 
 /**
  * main activity
@@ -194,14 +193,6 @@ public class MainActivity extends TestBaseActivity {
             public void onClick(View v) {
                 // test in virtual Xposed environment
                 TestInVirtualXposedEnvironment.start(mContext);
-            }
-        });
-
-        getButton(layout, "TestVirtualMultiAppActivity", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // get device id
-                TestVirtualMultiAppActivity.start(mContext);
             }
         }).performClick();
 

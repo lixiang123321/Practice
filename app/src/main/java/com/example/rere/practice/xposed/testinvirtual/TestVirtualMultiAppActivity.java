@@ -1,4 +1,4 @@
-package com.example.rere.practice.deviceinfo;
+package com.example.rere.practice.xposed.testinvirtual;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.rere.practice.base.activity.TestBaseActivity;
 import com.example.rere.practice.base.utils.TagLog;
+import com.example.rere.practice.base.utils.ValidControlUtils;
 
 /**
  * Created by rere on 18-7-2.
@@ -37,6 +38,14 @@ public class TestVirtualMultiAppActivity extends TestBaseActivity {
                         Manifest.permission.READ_PHONE_STATE,
                 };
                 checkPermissionCheck(KEY_PERMISSIONS_REQUEST, permissions);
+            }
+        });
+
+        getButton(layout, "is valid", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isValid = ValidControlUtils.isValid();
+                TagLog.i(TAG, "onClick() : " + " isValid = " + isValid + ",");
             }
         });
     }

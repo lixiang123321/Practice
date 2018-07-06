@@ -1,4 +1,4 @@
-package com.example.rere.practice.xposedwifi;
+package com.example.rere.practice.xposed.xposedwifi;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -21,9 +21,9 @@ import android.widget.ToggleButton;
 
 import com.example.rere.practice.base.activity.TestBaseActivity;
 import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.xposedwifi.data.FileUtils;
-import com.example.rere.practice.xposedwifi.data.LocalDataIOUtils;
-import com.example.rere.practice.xposedwifi.data.LocalSavaDataBean;
+import com.example.rere.practice.xposed.xposedwifi.data.FileUtils;
+import com.example.rere.practice.xposed.xposedwifi.data.LocalDataIOUtils;
+import com.example.rere.practice.xposed.xposedwifi.data.LocalSavaDataBean;
 import com.google.gson.Gson;
 
 import java.io.IOException;

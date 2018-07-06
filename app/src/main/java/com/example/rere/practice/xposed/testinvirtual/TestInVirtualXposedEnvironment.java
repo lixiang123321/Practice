@@ -1,4 +1,4 @@
-package com.example.rere.practice.testvirtualxposedenvironment;
+package com.example.rere.practice.xposed.testinvirtual;
 
 import android.content.Context;
 import android.content.Intent;
@@ -35,6 +35,14 @@ public class TestInVirtualXposedEnvironment extends TestBaseActivity {
 
     @Override
     protected void addViews(LinearLayout layout) {
+        getButton(layout, "test multi app", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // test multi app
+                TestVirtualMultiAppActivity.start(mContext);
+            }
+        }).performClick();
+
         getButton(layout, "environment get data dir", new View.OnClickListener() {
             @Override
             public void onClick(View v) {

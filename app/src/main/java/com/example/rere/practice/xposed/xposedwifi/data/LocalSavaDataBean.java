@@ -1,4 +1,4 @@
-package com.example.rere.practice.xposedwifi.data;
+package com.example.rere.practice.xposed.xposedwifi.data;
 
 import android.text.TextUtils;
 

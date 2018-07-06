@@ -58,11 +58,6 @@
 
         <activity android:name=".textviewwithimageview.TestTextViewWithImageViewAct"/>
 
-        <activity android:name=".testinvirtual.TestInVirtualXposedActivity"/>
-        <activity android:name=".testinvirtual.TestInVirtualXposedActivity2"/>
-        <activity android:name=".xposedwifi.XposedWifiActivity"/>
-        <activity android:name=".xposedwifi.XposedWifiConfigActivity"/>
-
         <activity android:name=".reverse.TestReverseEngineeringActivity"/>
 
         <!-- 刘望舒blog 练习-->
@@ -72,11 +67,18 @@
         <!-- wifi -->
         <activity android:name=".wifi.TestWifiActivity"/>
 
-        <!-- TestInVirtualXposedEnvironmentment -->
-        <activity android:name=".testvirtualxposedenvironment.TestInVirtualXposedEnvironment"/>
-
-        <!-- test device info -->
-        <activity android:name=".deviceinfo.TestVirtualMultiAppActivity"/>
+        <!-- xposed -->
+        <!-- xposed wifi -->
+        <activity android:name=".xposed.xposedwifi.XposedWifiActivity"/>
+        <activity android:name=".xposed.xposedwifi.XposedWifiConfigActivity"/>
+        <!-- xposed file manager -->
+        <activity android:name=".xposed.filemanager.ListFileActivity"/>
+        <!-- xposed test -->
+        <activity android:name=".xposed.testinvirtual.TestInVirtualXposedActivity"/>
+        <activity android:name=".xposed.testinvirtual.TestInVirtualXposedActivity2"/>
+        <activity android:name=".xposed.testinvirtual.TestInVirtualXposedEnvironment"/>
+        <activity android:name=".xposed.testinvirtual.TestVirtualMultiAppActivity"/>
+        <!-- xposed end.-->
 
     </application>
 
