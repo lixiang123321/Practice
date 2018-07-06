@@ -5,7 +5,8 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.xposed.testinvirtual.TestInVirtualXposedActivity2;
+import com.example.rere.practice.xposed.entrys.HookEntry;
+import com.example.rere.practice.xposed.test.TestInVirtualXposedActivity2;
 import com.example.rere.practice.xposed.xposedwifi.data.LocalDataIOUtils;
 import com.example.rere.practice.xposed.xposedwifi.data.LocalSavaDataBean;
 import com.google.gson.Gson;
@@ -22,11 +23,11 @@ import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
-import static com.example.rere.practice.xposed.testinvirtual.TestInVirtualXposedActivity2.KEY_EXPOSED_VIRTUAL;
-import static com.example.rere.practice.xposed.testinvirtual.TestInVirtualXposedActivity2.KEY_FILES;
-import static com.example.rere.practice.xposed.testinvirtual.TestInVirtualXposedActivity2.KEY_PACKAGE_NAME;
-import static com.example.rere.practice.xposed.testinvirtual.TestInVirtualXposedActivity2.KEY_PATH_SEPARATOR;
-import static com.example.rere.practice.xposed.testinvirtual.TestInVirtualXposedActivity2.KEY_PREFIX_DATA_USER_0;
+import static com.example.rere.practice.xposed.test.TestInVirtualXposedActivity2.KEY_EXPOSED_VIRTUAL;
+import static com.example.rere.practice.xposed.test.TestInVirtualXposedActivity2.KEY_FILES;
+import static com.example.rere.practice.xposed.test.TestInVirtualXposedActivity2.KEY_PACKAGE_NAME;
+import static com.example.rere.practice.xposed.test.TestInVirtualXposedActivity2.KEY_PATH_SEPARATOR;
+import static com.example.rere.practice.xposed.test.TestInVirtualXposedActivity2.KEY_PREFIX_DATA_USER_0;
 
 /**
  * Created by rere on 2018/6/17.
