@@ -68,16 +68,18 @@
         <activity android:name=".wifi.TestWifiActivity"/>
 
         <!-- xposed -->
+        <activity android:name=".xposed.XposedActs"/>
         <!-- xposed wifi -->
         <activity android:name=".xposed.xposedwifi.XposedWifiActivity"/>
         <activity android:name=".xposed.xposedwifi.XposedWifiConfigActivity"/>
         <!-- xposed file manager -->
         <activity android:name=".xposed.filemanager.ListFileActivity"/>
         <!-- xposed test -->
-        <activity android:name=".xposed.testinvirtual.TestInVirtualXposedActivity"/>
-        <activity android:name=".xposed.testinvirtual.TestInVirtualXposedActivity2"/>
-        <activity android:name=".xposed.testinvirtual.TestInVirtualXposedEnvironment"/>
-        <activity android:name=".xposed.testinvirtual.TestVirtualMultiAppActivity"/>
+        <activity android:name=".xposed.test.TestXposedActs"/>
+        <activity android:name=".xposed.test.TestInVirtualXposedActivity"/>
+        <activity android:name=".xposed.test.TestInVirtualXposedActivity2"/>
+        <activity android:name=".xposed.test.TestInVirtualXposedEnvironment"/>
+        <activity android:name=".xposed.test.TestVirtualMultiAppActivity"/>
         <!-- xposed end.-->
 
     </application>

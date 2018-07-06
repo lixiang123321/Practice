@@ -1,4 +1,4 @@
-package com.example.rere.practice.xposed.testinvirtual;
+package com.example.rere.practice.xposed.test;
 
 import android.Manifest;
 import android.annotation.SuppressLint;

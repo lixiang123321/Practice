@@ -28,10 +28,7 @@ import com.example.rere.practice.testdistinct.TestDistinctAct;
 import com.example.rere.practice.textviewwithimageview.TestTextViewWithImageViewAct;
 import com.example.rere.practice.wifi.TestWifiActivity;
 import com.example.rere.practice.wifi.TestWifiUtils;
-import com.example.rere.practice.xposed.testinvirtual.TestInVirtualXposedActivity;
-import com.example.rere.practice.xposed.testinvirtual.TestInVirtualXposedActivity2;
-import com.example.rere.practice.xposed.testinvirtual.TestInVirtualXposedEnvironment;
-import com.example.rere.practice.xposed.xposedwifi.XposedWifiActivity;
+import com.example.rere.practice.xposed.XposedActs;
 
 /**
  * main activity
@@ -96,30 +93,6 @@ public class MainActivity extends TestBaseActivity {
             public void onClick(View v) {
                 // test textview end with imageView
                 TestTextViewWithImageViewAct.start(mContext);
-            }
-        });
-
-        getButton(layout, "test in virtual Xposed Activity", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // test in virtual Xposed Activity
-                TestInVirtualXposedActivity.start(mContext);
-            }
-        });
-
-        getButton(layout, "test in virtual Xposed Activity2", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // test in virtual Xposed Activity2
-                TestInVirtualXposedActivity2.start(mContext);
-            }
-        });
-
-        getButton(layout, "Xposed wifi activity", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Xposed wifi activity
-                XposedWifiActivity.start(mContext);
             }
         });
 
@@ -188,11 +161,11 @@ public class MainActivity extends TestBaseActivity {
             }
         });
 
-        getButton(layout, "test in virtual Xposed environment", new View.OnClickListener() {
+        getButton(layout, "Xposed activitys", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // test in virtual Xposed environment
-                TestInVirtualXposedEnvironment.start(mContext);
+                // Xposed activitys
+                XposedActs.start(mContext);
             }
         }).performClick();
 

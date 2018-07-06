@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 import com.example.rere.practice.base.activity.TestBaseActivity;
 import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.xposed.testinvirtual.TestInVirtualXposedActivity2;
+import com.example.rere.practice.xposed.test.TestInVirtualXposedActivity2;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package com.example.rere.practice.xposed;
+package com.example.rere.practice.xposed.entrys;
 
 import android.view.View;
 
