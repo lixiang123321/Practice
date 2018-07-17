@@ -82,6 +82,30 @@
         <activity android:name=".xposed.test.TestVirtualMultiAppActivity"/>
         <!-- xposed end.-->
 
+        <!-- test launch mode -->
+        <activity android:name=".launchmode.base.TestLaunchModeBaseActivity"/>
+        <activity android:name=".launchmode.StandardAct"/>
+        <activity
+            android:name=".launchmode.SingleTopAct"
+            android:launchMode="singleTop"/>
+        <activity
+            android:name=".launchmode.SingleTaskAct"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            />
+        <activity
+            android:name=".launchmode.SingleInstanceAct"
+            android:launchMode="singleInstance"/>
+        <activity
+            android:name=".launchmode.SingleTaskAct2"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            />
+        <activity
+            android:name=".launchmode.AllowTaskReparentingAct"
+            android:allowTaskReparenting="true"
+            />
+
     </application>
 
 </manifest>

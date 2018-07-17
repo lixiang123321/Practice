@@ -49,7 +49,7 @@ public class TestXposedActs extends TestBaseActivity {
             @Override
             public void onClick(View v) {
                 // file manager
-                String fileName = XposedConstants.KEY_PREFIX_DATA_USER_0 + XposedConstants.KEY_EXPOSED_VIRTUAL;
+                String fileName = XposedConstants.KEY_PREFIX_DATA_USER_0 + XposedConstants.KEY_EXPOSED_PACKAGE_NAME;
                 ListFileActivity.start(mContext, fileName);
             }
         });

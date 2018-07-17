@@ -21,6 +21,7 @@ import com.example.rere.practice.concurrent.TestLocksActivity;
 import com.example.rere.practice.concurrent.TestSynchronizationActivity;
 import com.example.rere.practice.concurrent.TestThreadAndExecutorActivity;
 import com.example.rere.practice.java8.TestJava8Activity;
+import com.example.rere.practice.launchmode.base.TestLaunchModeBaseActivity;
 import com.example.rere.practice.liuwangshu.TestLiuWangShuPracticeActivity;
 import com.example.rere.practice.reverse.TestReverseEngineeringActivity;
 import com.example.rere.practice.sms.SmsUtils;
@@ -166,6 +167,14 @@ public class MainActivity extends TestBaseActivity {
             public void onClick(View v) {
                 // Xposed activitys
                 XposedActs.start(mContext);
+            }
+        });
+
+        getButton(layout, "Test LaunchMode acts", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Test LaunchMode acts
+                TestLaunchModeBaseActivity.start(mContext);
             }
         }).performClick();
 
