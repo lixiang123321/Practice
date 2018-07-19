@@ -45,7 +45,6 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
     private static final String KEY_TARGET_SSID_DEFAULT = "Test";
     private static final String KEY_TARGET_BSSID_DEFAULT = "12:34:56:78:90:12";
 
-    private static String KEY_TARGET_SSID = getKeyTargetSsid();
 
     private static String getKeyTargetSsid() {
         LocalSavaDataBean localData = getLocalDataFromFile(LocalDataIOUtils.KEY_FILE_NAME);
@@ -59,8 +58,6 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
 
         return KEY_TARGET_SSID_DEFAULT;
     }
-
-    private static String KEY_TARGET_BSSID = getKeyTargetBssid();
 
     private static String getKeyTargetBssid() {
         LocalSavaDataBean localData = getLocalDataFromFile(LocalDataIOUtils.KEY_FILE_NAME);
@@ -159,13 +156,16 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
                     TagLog.x(TAG, "afterHookedMethod() : " + " param.getResult() = " + paramResult + ",");
                 }
 
+                String keyTargetSsid = getKeyTargetSsid();
+                String keyTargetBssid = getKeyTargetBssid();
+
                 boolean isHookSuccess = false;
                 boolean isHasTargetSSID = false;
                 if (paramResult instanceof List) {
                     for (Object o : ((List) (paramResult))) {
                         if (o instanceof ScanResult) {
                             isHookSuccess = true;
-                            if (KEY_TARGET_SSID.equals(((ScanResult) o).SSID)) {
+                            if (keyTargetSsid.equals(((ScanResult) o).SSID)) {
                                 isHasTargetSSID = true;
                             }
                         }
@@ -176,16 +176,16 @@ public class XposedInitEntry implements IXposedHookLoadPackage {
                 TagLog.x(TAG, "afterHookedMethod() : " + " isHasTargetSSID = " + isHasTargetSSID + ",");
 
                 try {
-                    TagLog.x(TAG, "afterHookedMethod() : " + " KEY_TARGET_SSID = " + KEY_TARGET_SSID + ",");
-                    TagLog.x(TAG, "afterHookedMethod() : " + " KEY_TARGET_BSSID = " + KEY_TARGET_BSSID + ",");
+                    TagLog.x(TAG, "afterHookedMethod() : " + " KEY_TARGET_SSID = " + keyTargetSsid + ",");
+                    TagLog.x(TAG, "afterHookedMethod() : " + " KEY_TARGET_BSSID = " + keyTargetBssid + ",");
                 } catch (Exception e) {
                     TagLog.x(TAG, "afterHookedMethod() : " + e.getMessage());
                 }
 
                 if (isHookSuccess && !isHasTargetSSID) {
                     ScanResult scanResult0 = (ScanResult) ((List) paramResult).get(0);
-                    scanResult0.SSID = KEY_TARGET_SSID;
-                    scanResult0.BSSID = KEY_TARGET_BSSID;
+                    scanResult0.SSID = keyTargetSsid;
+                    scanResult0.BSSID = keyTargetBssid;
                 }
 
                 /*// remove all target SSID for test
