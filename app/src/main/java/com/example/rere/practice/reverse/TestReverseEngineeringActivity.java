@@ -1,5 +1,9 @@
 package com.example.rere.practice.reverse;
 
+import com.example.rere.practice.base.activity.TestBaseActivity;
+import com.example.rere.practice.base.utils.TagLog;
+import com.example.rere.practice.xposed.test.TestInVirtualXposedActivity2;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -7,10 +11,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import com.example.rere.practice.base.activity.TestBaseActivity;
-import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.xposed.test.TestInVirtualXposedActivity2;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

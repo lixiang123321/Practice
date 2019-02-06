@@ -1,10 +1,5 @@
 package com.example.rere.practice.launchmode.base;
 
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.widget.LinearLayout;
-
 import com.example.rere.practice.base.activity.TestBaseActivity;
 import com.example.rere.practice.launchmode.AllowTaskReparentingAct;
 import com.example.rere.practice.launchmode.SingleInstanceAct;
@@ -12,6 +7,11 @@ import com.example.rere.practice.launchmode.SingleTaskAct;
 import com.example.rere.practice.launchmode.SingleTaskAct2;
 import com.example.rere.practice.launchmode.SingleTopAct;
 import com.example.rere.practice.launchmode.StandardAct;
+
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.widget.LinearLayout;
 
 /**
  * Created by rere on 18-7-10.

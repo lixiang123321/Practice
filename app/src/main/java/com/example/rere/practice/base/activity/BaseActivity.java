@@ -1,13 +1,13 @@
 package com.example.rere.practice.base.activity;
 
+import com.example.rere.practice.base.utils.TagLog;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Window;
-
-import com.example.rere.practice.base.utils.TagLog;
 
 /**
  * base activity

@@ -1,15 +1,16 @@
 package com.example.rere.practice.xposed;
 
-import android.net.wifi.ScanResult;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import com.google.gson.Gson;
 
 import com.example.rere.practice.base.utils.TagLog;
 import com.example.rere.practice.xposed.entrys.HookEntry;
 import com.example.rere.practice.xposed.test.TestInVirtualXposedActivity2;
 import com.example.rere.practice.xposed.xposedwifi.data.LocalDataIOUtils;
 import com.example.rere.practice.xposed.xposedwifi.data.LocalSavaDataBean;
-import com.google.gson.Gson;
+
+import android.net.wifi.ScanResult;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

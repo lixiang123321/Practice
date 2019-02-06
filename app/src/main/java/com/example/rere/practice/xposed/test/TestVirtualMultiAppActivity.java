@@ -1,5 +1,9 @@
 package com.example.rere.practice.xposed.test;
 
+import com.example.rere.practice.base.activity.TestBaseActivity;
+import com.example.rere.practice.base.utils.TagLog;
+import com.example.rere.practice.base.utils.ValidControlUtils;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,10 +15,6 @@ import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import com.example.rere.practice.base.activity.TestBaseActivity;
-import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.base.utils.ValidControlUtils;
 
 /**
  * Created by rere on 18-7-2.

@@ -1,5 +1,13 @@
 package com.example.rere.practice.xposed.xposedwifi;
 
+import com.google.gson.Gson;
+
+import com.example.rere.practice.base.activity.TestBaseActivity;
+import com.example.rere.practice.base.utils.TagLog;
+import com.example.rere.practice.xposed.xposedwifi.data.FileUtils;
+import com.example.rere.practice.xposed.xposedwifi.data.LocalDataIOUtils;
+import com.example.rere.practice.xposed.xposedwifi.data.LocalSavaDataBean;
+
 import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,13 +26,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-
-import com.example.rere.practice.base.activity.TestBaseActivity;
-import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.xposed.xposedwifi.data.FileUtils;
-import com.example.rere.practice.xposed.xposedwifi.data.LocalDataIOUtils;
-import com.example.rere.practice.xposed.xposedwifi.data.LocalSavaDataBean;
-import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,13 +1,14 @@
 package com.example.rere.practice.xposed.xposedwifi.data;
 
 
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
+import com.google.gson.Gson;
 
 import com.example.rere.practice.base.BaseApplication;
 import com.example.rere.practice.base.utils.TagLog;
-import com.google.gson.Gson;
+
+import android.content.Context;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import java.io.File;
 

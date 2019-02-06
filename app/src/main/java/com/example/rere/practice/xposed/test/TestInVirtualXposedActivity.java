@@ -1,5 +1,8 @@
 package com.example.rere.practice.xposed.test;
 
+import com.example.rere.practice.base.activity.TestBaseActivity;
+import com.example.rere.practice.base.utils.TagLog;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
@@ -7,9 +10,6 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import com.example.rere.practice.base.activity.TestBaseActivity;
-import com.example.rere.practice.base.utils.TagLog;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

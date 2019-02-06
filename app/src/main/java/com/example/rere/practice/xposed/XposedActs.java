@@ -1,13 +1,13 @@
 package com.example.rere.practice.xposed;
 
+import com.example.rere.practice.base.activity.TestBaseActivity;
+import com.example.rere.practice.xposed.test.TestXposedActs;
+import com.example.rere.practice.xposed.xposedwifi.XposedWifiActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import com.example.rere.practice.base.activity.TestBaseActivity;
-import com.example.rere.practice.xposed.test.TestXposedActs;
-import com.example.rere.practice.xposed.xposedwifi.XposedWifiActivity;
 
 /**
  * Created by rere on 18-7-6.

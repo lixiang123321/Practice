@@ -1,8 +1,8 @@
 package com.example.rere.practice.xposed.xposedwifi.data;
 
-import android.text.TextUtils;
-
 import com.example.rere.practice.base.utils.TagLog;
+
+import android.text.TextUtils;
 
 import java.util.Collections;
 import java.util.Comparator;

@@ -1,13 +1,13 @@
 package com.example.rere.practice.xposed.test;
 
+import com.example.rere.practice.base.activity.TestBaseActivity;
+import com.example.rere.practice.xposed.XposedConstants;
+import com.example.rere.practice.xposed.filemanager.ListFileActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import com.example.rere.practice.base.activity.TestBaseActivity;
-import com.example.rere.practice.xposed.XposedConstants;
-import com.example.rere.practice.xposed.filemanager.ListFileActivity;
 
 /**
  * Created by rere on 18-7-6.

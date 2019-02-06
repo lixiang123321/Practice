@@ -1,14 +1,14 @@
 package com.example.rere.practice.xposed.test;
 
+import com.example.rere.practice.base.activity.TestBaseActivity;
+import com.example.rere.practice.base.utils.TagLog;
+import com.example.rere.practice.base.utils.ToastUtils;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import com.example.rere.practice.base.activity.TestBaseActivity;
-import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.base.utils.ToastUtils;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,5 +1,11 @@
 package com.example.rere.practice.xposed.filemanager;
 
+import com.example.rere.practice.R;
+import com.example.rere.practice.base.activity.BaseActivity;
+import com.example.rere.practice.base.utils.TagLog;
+import com.example.rere.practice.base.utils.ToastUtils;
+import com.example.rere.practice.xposed.xposedwifi.data.FileUtils;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,12 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.rere.practice.R;
-import com.example.rere.practice.base.activity.BaseActivity;
-import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.base.utils.ToastUtils;
-import com.example.rere.practice.xposed.xposedwifi.data.FileUtils;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -1,9 +1,9 @@
 package com.example.rere.practice.launchmode;
 
+import com.example.rere.practice.launchmode.base.TestLaunchModeBaseActivity;
+
 import android.content.Context;
 import android.content.Intent;
-
-import com.example.rere.practice.launchmode.base.TestLaunchModeBaseActivity;
 
 /**
  * Created by rere on 18-7-10.
