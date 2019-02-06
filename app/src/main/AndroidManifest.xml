@@ -72,6 +72,12 @@
         <!-- TestInVirtualXposedEnvironmentment -->
         <activity android:name=".testvirtualxposedenvironment.TestInVirtualXposedEnvironment"/>
 
+        <!-- test network act -->
+        <activity android:name=".network.TestNetworkAct"/>
+
+        <!-- test decrypt ace -->
+        <activity android:name=".encrypt.TestEncryptAct"/>
+
     </application>
 
 </manifest>
