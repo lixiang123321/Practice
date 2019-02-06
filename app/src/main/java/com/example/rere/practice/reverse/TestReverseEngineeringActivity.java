@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.example.rere.practice.base.activity.TestBaseActivity;
 import com.example.rere.practice.base.utils.TagLog;
+import com.example.rere.practice.xposed.test.TestInVirtualXposedActivity2;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -45,7 +46,7 @@ public class TestReverseEngineeringActivity extends TestBaseActivity {
                     final String strName = p.applicationInfo.loadLabel(packageManager).toString();
                     final String strVendor = p.packageName;
 
-                    if (!"com.ccb.wop".equals(p.packageName)) {
+                    if (!TestInVirtualXposedActivity2.KEY_PACKAGE_NAME.equals(p.packageName)) {
                         continue;
                     }
 

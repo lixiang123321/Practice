@@ -1,27 +1,5 @@
 package com.example.rere.practice.main;
 
-import com.example.rere.practice.animateview.TestAnimateViewActivity;
-import com.example.rere.practice.base.activity.TestBaseActivity;
-import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.callapp.TestCallAppActivity;
-import com.example.rere.practice.concurrent.TestLocksActivity;
-import com.example.rere.practice.concurrent.TestSynchronizationActivity;
-import com.example.rere.practice.concurrent.TestThreadAndExecutorActivity;
-import com.example.rere.practice.encrypt.TestEncryptAct;
-import com.example.rere.practice.java8.TestJava8Activity;
-import com.example.rere.practice.liuwangshu.TestLiuWangShuPracticeActivity;
-import com.example.rere.practice.network.TestNetworkAct;
-import com.example.rere.practice.reverse.TestReverseEngineeringActivity;
-import com.example.rere.practice.sms.SmsUtils;
-import com.example.rere.practice.testdistinct.TestDistinctAct;
-import com.example.rere.practice.testinvirtual.TestInVirtualXposedActivity;
-import com.example.rere.practice.testinvirtual.TestInVirtualXposedActivity2;
-import com.example.rere.practice.testvirtualxposedenvironment.TestInVirtualXposedEnvironment;
-import com.example.rere.practice.textviewwithimageview.TestTextViewWithImageViewAct;
-import com.example.rere.practice.wifi.TestWifiActivity;
-import com.example.rere.practice.wifi.TestWifiUtils;
-import com.example.rere.practice.xposedwifi.XposedWifiActivity;
-
 import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -34,6 +12,26 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import com.example.rere.practice.animateview.TestAnimateViewActivity;
+import com.example.rere.practice.base.activity.TestBaseActivity;
+import com.example.rere.practice.base.utils.TagLog;
+import com.example.rere.practice.callapp.TestCallAppActivity;
+import com.example.rere.practice.concurrent.TestLocksActivity;
+import com.example.rere.practice.concurrent.TestSynchronizationActivity;
+import com.example.rere.practice.concurrent.TestThreadAndExecutorActivity;
+import com.example.rere.practice.java8.TestJava8Activity;
+import com.example.rere.practice.liuwangshu.TestLiuWangShuPracticeActivity;
+import com.example.rere.practice.reverse.TestReverseEngineeringActivity;
+import com.example.rere.practice.sms.SmsUtils;
+import com.example.rere.practice.testdistinct.TestDistinctAct;
+import com.example.rere.practice.testinvirtual.TestInVirtualXposedActivity;
+import com.example.rere.practice.testinvirtual.TestInVirtualXposedActivity2;
+import com.example.rere.practice.testvirtualxposedenvironment.TestInVirtualXposedEnvironment;
+import com.example.rere.practice.textviewwithimageview.TestTextViewWithImageViewAct;
+import com.example.rere.practice.wifi.TestWifiActivity;
+import com.example.rere.practice.wifi.TestWifiUtils;
+import com.example.rere.practice.xposedwifi.XposedWifiActivity;
 
 /**
  * main activity
@@ -198,10 +196,18 @@ public class MainActivity extends TestBaseActivity {
             }
         });
 
+        getButton(layout, "Test LaunchMode acts", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Test LaunchMode acts
+                TestLaunchModeBaseActivity.start(mContext);
+            }
+        }).performClick();
+
         getButton(layout, "TestNetworkAct", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 
+                //
                 TestNetworkAct.start(mContext);
             }
         });

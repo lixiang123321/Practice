@@ -1,12 +1,13 @@
 package com.example.rere.practice.base.activity;
 
-import com.example.rere.practice.base.utils.TagLog;
-
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Window;
+
+import com.example.rere.practice.base.utils.TagLog;
 
 /**
  * base activity
@@ -27,6 +28,12 @@ public abstract class BaseActivity extends Activity{
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         mContext = this;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        TagLog.i(TAG, "onNewIntent() : " + " intent = " + intent + ",");
     }
 
     @Override

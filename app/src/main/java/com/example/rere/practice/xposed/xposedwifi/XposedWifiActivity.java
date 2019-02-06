@@ -1,12 +1,4 @@
-package com.example.rere.practice.xposedwifi;
-
-import com.google.gson.Gson;
-
-import com.example.rere.practice.base.activity.TestBaseActivity;
-import com.example.rere.practice.base.utils.TagLog;
-import com.example.rere.practice.xposedwifi.data.FileUtils;
-import com.example.rere.practice.xposedwifi.data.LocalDataIOUtils;
-import com.example.rere.practice.xposedwifi.data.LocalSavaDataBean;
+package com.example.rere.practice.xposed.xposedwifi;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -21,9 +13,18 @@ import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
+
+import com.example.rere.practice.base.activity.TestBaseActivity;
+import com.example.rere.practice.base.utils.TagLog;
+import com.example.rere.practice.xposed.xposedwifi.data.FileUtils;
+import com.example.rere.practice.xposed.xposedwifi.data.LocalDataIOUtils;
+import com.example.rere.practice.xposed.xposedwifi.data.LocalSavaDataBean;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,6 +47,10 @@ public class XposedWifiActivity extends TestBaseActivity {
     private BroadcastReceiver mBroadcastReceiver;
     private LinearLayout mLayoutWifi;
     private LinearLayout mContentLayout;
+
+    // data
+    // 18-7-3 save or not flag
+    private boolean mIsSaveToFile = false;
 
     @Override
     protected void addViews(LinearLayout layout) {
@@ -102,6 +107,8 @@ public class XposedWifiActivity extends TestBaseActivity {
             }
         });
 
+        // is save to file;
+        addIsSaveToFileToggleButton(layout);
 
         getButton(layout, "scan wifi and save list to file", new View.OnClickListener() {
             @Override
@@ -127,6 +134,28 @@ public class XposedWifiActivity extends TestBaseActivity {
                 view.getId();
             }
         });
+    }
+
+    private void addIsSaveToFileToggleButton(LinearLayout layout) {
+        TagLog.i(TAG, "addIsSaveToFileToggleButton() : ");
+        LinearLayout linearLayout = new LinearLayout(mContext);
+        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+        layout.addView(linearLayout);
+
+        TextView textView = new TextView(mContext);
+        textView.setText(" mIsSaveToFile = ");
+
+        ToggleButton toggleButton = new ToggleButton(mContext);
+        toggleButton.setChecked(mIsSaveToFile);
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mIsSaveToFile = isChecked;
+            }
+        });
+
+        linearLayout.addView(textView);
+        linearLayout.addView(toggleButton);
     }
 
     private void scanWifisWifiPermissionCheck() {
@@ -172,7 +201,7 @@ public class XposedWifiActivity extends TestBaseActivity {
         TagLog.i(TAG, "scanWifis() : ");
         if (null == mWifiManager) {
             mWifiManager = (WifiManager)
-                    getSystemService(Context.WIFI_SERVICE);
+                    getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         }
         if (null == mBroadcastReceiver) {
             mBroadcastReceiver = new BroadcastReceiver() {
@@ -210,7 +239,7 @@ public class XposedWifiActivity extends TestBaseActivity {
     private void onWifiScanBroadcastReceive() {
         TagLog.i(TAG, "onWifiScanBroadcastReceive() : ");
         if (null == mWifiManager) {
-            mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+            mWifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         }
 
         List<ScanResult> scanResults = mWifiManager.getScanResults();
@@ -221,7 +250,11 @@ public class XposedWifiActivity extends TestBaseActivity {
 
         TagLog.i(TAG, "onWifiScanBroadcastReceive() : " + " scanResults.size() = " + scanResults.size() + ",");
         printWifiInfosToView(scanResults);
-        saveWifiInfosToFile(scanResults);
+
+        TagLog.i(TAG, "onWifiScanBroadcastReceive() : " + " mIsSaveToFile = " + mIsSaveToFile + ",");
+        if (mIsSaveToFile) {
+            saveWifiInfosToFile(scanResults);
+        }
     }
 
     private void printWifiInfosToView(List<ScanResult> scanResults) {

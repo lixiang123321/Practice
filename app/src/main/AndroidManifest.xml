@@ -7,12 +7,15 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <!-- internet -->
     <uses-permission android:name="android.permission.INTERNET"/>
-
 
     <!-- file -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <!-- read phone state -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
             android:name=".base.BaseApplication"
@@ -55,11 +58,6 @@
 
         <activity android:name=".textviewwithimageview.TestTextViewWithImageViewAct"/>
 
-        <activity android:name=".testinvirtual.TestInVirtualXposedActivity"/>
-        <activity android:name=".testinvirtual.TestInVirtualXposedActivity2"/>
-        <activity android:name=".xposedwifi.XposedWifiActivity"/>
-        <activity android:name=".xposedwifi.XposedWifiConfigActivity"/>
-
         <activity android:name=".reverse.TestReverseEngineeringActivity"/>
 
         <!-- 刘望舒blog 练习-->
@@ -69,8 +67,44 @@
         <!-- wifi -->
         <activity android:name=".wifi.TestWifiActivity"/>
 
-        <!-- TestInVirtualXposedEnvironmentment -->
-        <activity android:name=".testvirtualxposedenvironment.TestInVirtualXposedEnvironment"/>
+        <!-- xposed -->
+        <activity android:name=".xposed.XposedActs"/>
+        <!-- xposed wifi -->
+        <activity android:name=".xposed.xposedwifi.XposedWifiActivity"/>
+        <activity android:name=".xposed.xposedwifi.XposedWifiConfigActivity"/>
+        <!-- xposed file manager -->
+        <activity android:name=".xposed.filemanager.ListFileActivity"/>
+        <!-- xposed test -->
+        <activity android:name=".xposed.test.TestXposedActs"/>
+        <activity android:name=".xposed.test.TestInVirtualXposedActivity"/>
+        <activity android:name=".xposed.test.TestInVirtualXposedActivity2"/>
+        <activity android:name=".xposed.test.TestInVirtualXposedEnvironment"/>
+        <activity android:name=".xposed.test.TestVirtualMultiAppActivity"/>
+        <!-- xposed end.-->
+
+        <!-- test launch mode -->
+        <activity android:name=".launchmode.base.TestLaunchModeBaseActivity"/>
+        <activity android:name=".launchmode.StandardAct"/>
+        <activity
+            android:name=".launchmode.SingleTopAct"
+            android:launchMode="singleTop"/>
+        <activity
+            android:name=".launchmode.SingleTaskAct"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            />
+        <activity
+            android:name=".launchmode.SingleInstanceAct"
+            android:launchMode="singleInstance"/>
+        <activity
+            android:name=".launchmode.SingleTaskAct2"
+            android:launchMode="singleTask"
+            android:taskAffinity=""
+            />
+        <activity
+            android:name=".launchmode.AllowTaskReparentingAct"
+            android:allowTaskReparenting="true"
+            />
 
         <!-- test network act -->
         <activity android:name=".network.TestNetworkAct"/>
